@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<MvcStokProject.Models.Entity.TblUrunler>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    int count = 0;
+}
+<br />
+<h3>Ürünler Sayfası</h3>
+<table id="tblUrun" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ürün Ad</th>
+            <th>Marka</th>
+            <th>Kategori</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.UrunAd</td>
+            <td>@item.Marka</td>
+            <td>@item.TblKategoriler.KategoriAd</td>
+            <td>@item.Fiyat</td>
+            <td>@item.Stok</td>
+            <td><a href="/Urun/SilUrun/@item.UrunID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Urun/GuncelleUrun/@item.UrunID" class="btn btn-success">Güncelle</a></td>
+
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<br />
+<a href="/Urun/EkleUrun" class="btn btn-primary">Yeni Ürün Ekle</a>
+<br />
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
+<br />
+<link href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.min.css" rel="stylesheet" />
+<script>
+    $('#tblUrun').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+        }
+    });
+</script>

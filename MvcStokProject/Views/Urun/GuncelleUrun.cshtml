@@ -1,0 +1,33 @@
+﻿@model MvcStokProject.Models.Entity.TblUrunler
+@{
+    ViewBag.Title = "GuncelleUrun";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+   
+}
+
+<h3>GuncelleUrun</h3>
+
+<form method="post" class="form-group">
+    @Html.HiddenFor(x => x.UrunID, new { @class = "form-control" })
+    <label>Urun Ad</label>
+    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    <br />
+    <label>Marka</label>
+    @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+    <br />
+    <label>Ürun Kategori</label>
+    @Html.DropDownListFor(x => x.TblKategoriler.KategoriID, (List<SelectListItem>)ViewBag.dgr, "Kategoriyi Seçin", new { @class = "form-control" })
+    <br />
+    <label>Fiyat</label>
+    @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control" })
+    <br />
+    <label>Stok</label>
+    @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-primary"> Güncelle</button>
+
+
+
+
+
+</form>

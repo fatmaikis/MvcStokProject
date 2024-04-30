@@ -1,0 +1,24 @@
+﻿@model MvcStokProject.Models.Entity.TblKategoriler
+@{
+    ViewBag.Title = "GuncelleKategori";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3>Kategori Güncelleme Sayfası</h3>
+
+
+<form method="post" class="form-group">
+    <input type="hidden" class="form-control" name="KategoriID" value="@Model.KategoriID"/>
+    <div>
+        <label>Kategori Ad</label>
+        <input type="text" class="form-control" name="KategoriAd" value="@Model.KategoriAd"/>
+    </div>
+    <br />
+    <button class="btn btn-primary">Kategori Güncelle</button>
+
+
+
+
+
+
+</form>
